@@ -7,11 +7,12 @@ import (
 
 func HandleRequests() {
 	r := gin.Default()
-	r.GET("/api/students", controllers.GetStudents)
-	r.POST("/api/students", controllers.CreateStudent)
-	r.PATCH("/api/students/:id", controllers.UpdateStudent)
-	r.GET("/api/students/:id", controllers.GetStudent)
-	r.DELETE("/api/students/:id", controllers.DeleteStudent)
-	r.GET("/api/:name", controllers.Greeting)
+	r.GET("/students", controllers.GetStudents)
+	r.POST("/students", controllers.CreateStudent)
+	r.PATCH("/students/:id", controllers.UpdateStudent)
+	r.GET("/students/:id", controllers.GetStudent)
+	r.DELETE("/students/:id", controllers.DeleteStudent)
+	r.GET("/students/name/:name", controllers.GetStudentByName)
+	r.GET("/:name", controllers.Greeting)
 	r.Run()
 }
