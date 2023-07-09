@@ -7,5 +7,3 @@ type Student struct {
 	Name string `json:"name"`
 	Document string `json:"document"`
 }
-
-var Students []Student
