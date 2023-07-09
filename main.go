@@ -1,17 +1,17 @@
 package main
 
-import "github.com/gin-gonic/gin"
-
-func getStudents(c *gin.Context) {
-	c.JSON(200, gin.H{
-		"message": "pong",
-	})
-}
+import (
+	"github.com/jonathas/gin-rest-api/database"
+	"github.com/jonathas/gin-rest-api/models"
+	"github.com/jonathas/gin-rest-api/routes"
+)
 
 func main() {
-	r := gin.Default()
+	database.Connect()
 
-	r.GET("/students", getStudents)
-	
-	r.Run()
+	models.Students = []models.Student{
+		{Name: "Jonathas", Document: "123456789"},
+		{Name: "João", Document: "987654321"},
+	}
+	routes.HandleRequests()
 }
