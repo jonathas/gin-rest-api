@@ -1,9 +1,19 @@
 package models
 
-import "gorm.io/gorm"
+import (
+	"gopkg.in/validator.v2"
+	"gorm.io/gorm"
+)
 
 type Student struct {
 	gorm.Model // This inserts ID, CreatedAt, UpdatedAt, DeletedAt
-	Name string `json:"name"`
-	Document string `json:"document"`
+	Name string `json:"name" validate:"nonzero"`
+	Document string `json:"document" validate:"len=11,regexp=^[0-9]*$"`
+}
+
+func ValidateStudent(student *Student) error {
+	if err := validator.Validate(student); err != nil {
+		return err
+	}
+	return nil
 }
