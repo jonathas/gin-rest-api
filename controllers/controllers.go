@@ -72,7 +72,7 @@ func UpdateStudent(c *gin.Context) {
 		return
 	}
 
-	database.DB.Model(&student).UpdateColumns(student)
+	database.DB.Save(&student)
 
 	c.JSON(http.StatusOK, student)
 }
@@ -86,16 +86,11 @@ func DeleteStudent(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"message": "Student deleted!"})
 }
 
-func GetStudentByName(c *gin.Context) {
-	var student models.Student
+func GetStudentsByName(c *gin.Context) {
+	var students []models.Student
 	name := c.Param("name")
 
-	database.DB.Where(&models.Student{Name: name}).First(&student)
+	database.DB.Where(&models.Student{Name: name}).Find(&students)
 
-	if student.ID == 0 {
-		c.JSON(http.StatusNotFound, gin.H{"error": "Student not found!"})
-		return
-	}
-
-	c.JSON(http.StatusOK, student)
+	c.JSON(http.StatusOK, students)
 }

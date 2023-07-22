@@ -12,7 +12,7 @@ func HandleRequests() {
 	r.PATCH("/students/:id", controllers.UpdateStudent)
 	r.GET("/students/:id", controllers.GetStudent)
 	r.DELETE("/students/:id", controllers.DeleteStudent)
-	r.GET("/students/name/:name", controllers.GetStudentByName)
+	r.GET("/students/name/:name", controllers.GetStudentsByName)
 	r.GET("/:name", controllers.Greeting)
 	r.Run()
 }

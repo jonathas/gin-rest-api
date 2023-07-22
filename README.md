@@ -11,6 +11,12 @@ Start the DB:
 docker compose -f ./resources/docker-compose.yml up
 ```
 
+Run the tests:
+
+```bash
+go test
+```
+
 Start the server:
 
 ```bash
