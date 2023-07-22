@@ -94,3 +94,7 @@ func GetStudentsByName(c *gin.Context) {
 
 	c.JSON(http.StatusOK, students)
 }
+
+func EndpointNotFound(c *gin.Context) {
+	c.JSON(http.StatusNotFound, gin.H{"error": "Endpoint not found!"})
+}

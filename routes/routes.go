@@ -14,5 +14,6 @@ func HandleRequests() {
 	r.DELETE("/students/:id", controllers.DeleteStudent)
 	r.GET("/students/name/:name", controllers.GetStudentsByName)
 	r.GET("/:name", controllers.Greeting)
+	r.NoRoute((controllers.EndpointNotFound))
 	r.Run()
 }
